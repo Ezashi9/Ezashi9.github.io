@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; style-src 'self'; img-src 'self' https://github.com; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Eisa Chaudry · Cyber Security Projects</title>
+  <meta name="description" content="Working, tested security tools built by Eisa Chaudry: SSH attack detection, threat intelligence, a live threat feed and a privacy-preserving password breach checker.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="intro">
+      <p class="eyebrow">Cyber security portfolio</p>
+      <h1>Eisa Chaudry</h1>
+      <p class="lede">I build small security tools that actually work, then publish them with tests, live demos and write-ups explaining every decision. I'm studying a Level 3 BTEC Extended Diploma in Computer Science and looking for a <strong>cyber security apprenticeship starting September 2027</strong>.</p>
+      <ul class="links">
+        <li><a href="https://github.com/Ezashi9">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/eisa-c-667294372/">LinkedIn</a></li>
+        <li>Watford, UK</li>
+      </ul>
+    </header>
+
+    <section aria-labelledby="soc-title">
+      <h2 id="soc-title">Home SOC: a security operations centre built piece by piece</h2>
+      <p class="section-lede">Four tools that each work on their own and also connect into one pipeline, the same way a real SOC moves from spotting an attack to reporting it.</p>
+      <ol class="pipeline" aria-label="Pipeline">
+        <li><span class="step">1 · Detect</span>Log Hunter</li>
+        <li><span class="step">2 · Investigate</span>IOC Enricher</li>
+        <li><span class="step">3 · Report</span>Dashboard</li>
+        <li><span class="step">4 · Automate</span>Live Threat Feed</li>
+      </ol>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Log Hunter</h3>
+          <p class="what">Reads SSH server logs and detects brute-force attacks, username spraying and suspicious successful logins.</p>
+          <p class="result"><strong>On real server logs:</strong> 532 failed logins from 24 IPs; flagged 6 brute-force sources, one making 147 attempts in 5 minutes. Checking it against the raw data exposed two parsing gaps that were hiding attacks, both fixed and tested.</p>
+          <p class="result"><strong>SOC-ready:</strong> every detection is mapped to MITRE ATT&amp;CK (T1110 Brute Force, T1078 Valid Accounts) and published as a Sigma rule, the vendor-neutral format SIEMs import, validated with the official Sigma tools.</p>
+          <p class="tags">Python · detection engineering · MITRE ATT&amp;CK · Sigma · unit tests</p>
+          <p class="actions"><a href="https://github.com/Ezashi9/log-hunter">Code and write-up</a></p>
+          <p class="badge"><img src="https://github.com/Ezashi9/log-hunter/actions/workflows/ci.yml/badge.svg" alt="Log Hunter test status" width="100" height="20"></p>
+        </article>
+
+        <article class="card">
+          <h3>IOC Enricher</h3>
+          <p class="what">Checks attacker IP addresses against AbuseIPDB threat intelligence and gives each a verdict.</p>
+          <p class="result"><strong>Finding:</strong> attackers from older logs had dropped out of threat feeds entirely, while 9 of 10 IPs attacking SSH that week scored 100/100. Threat intelligence goes stale. Never sends internal IPs to third parties; API key kept out of code.</p>
+          <p class="tags">Python · threat intelligence · APIs · secrets handling</p>
+          <p class="actions"><a href="https://github.com/Ezashi9/ioc-enricher">Code and write-up</a></p>
+          <p class="badge"><img src="https://github.com/Ezashi9/ioc-enricher/actions/workflows/ci.yml/badge.svg" alt="IOC Enricher test status" width="100" height="20"></p>
+        </article>
+
+        <article class="card">
+          <h3>Home SOC Dashboard</h3>
+          <p class="what">A web dashboard presenting Log Hunter's detections and the threat-intelligence verdicts.</p>
+          <p class="result"><strong>Security focus:</strong> attackers choose the usernames that appear in logs, so the dashboard is hardened against log-injection XSS (output escaping, safe rendering, strict Content Security Policy) and was tested with malicious payloads in a real browser.</p>
+          <p class="tags">JavaScript · web security · XSS · data visualisation</p>
+          <p class="actions"><a href="https://ezashi9.github.io/home-soc-dashboard/">Live demo</a><a href="https://github.com/Ezashi9/home-soc-dashboard">Code</a></p>
+          <p class="badge"><img src="https://github.com/Ezashi9/home-soc-dashboard/actions/workflows/ci.yml/badge.svg" alt="Dashboard test status" width="100" height="20"></p>
+        </article>
+
+        <article class="card">
+          <h3>Live Threat Feed</h3>
+          <p class="what">A pipeline that runs itself every day: pulls current attacker data from SANS DShield and blocklist.de, checks it against AbuseIPDB and publishes it.</p>
+          <p class="result"><strong>Finding:</strong> the same check flagged 24 of 25 SSH password guessers as malicious, but 0 of the 25 busiest sources on DShield, which are mostly scanners. No single feed sees everything.</p>
+          <p class="tags">GitHub Actions · automation · encrypted secrets · supply-chain security</p>
+          <p class="actions"><a href="https://ezashi9.github.io/home-soc-dashboard/live.html">Live feed</a><a href="https://github.com/Ezashi9/home-soc-dashboard#live-threat-feed-updated-automatically-every-day">How it works</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="other-title">
+      <h2 id="other-title">Privacy tool</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Breach Check</h3>
+          <p class="what">Checks whether a password has appeared in a data breach without the password ever leaving your device.</p>
+          <p class="result"><strong>How:</strong> k-anonymity. Only the first 5 characters of the password's SHA-1 hash are sent to Have I Been Pwned; the browser compares the ~2,000 returned hashes itself. Verified in a browser that the password appears in no network request.</p>
+          <p class="tags">JavaScript · Python · cryptographic hashing · privacy by design</p>
+          <p class="actions"><a href="https://ezashi9.github.io/breach-check/">Try it</a><a href="https://github.com/Ezashi9/breach-check">Code</a></p>
+          <p class="badge"><img src="https://github.com/Ezashi9/breach-check/actions/workflows/ci.yml/badge.svg" alt="Breach Check test status" width="100" height="20"></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="card how" aria-labelledby="how-title">
+      <h2 id="how-title">How I build</h2>
+      <ul>
+        <li><strong>Tested on every change.</strong> Each project's tests run automatically on GitHub; the badges above show the current result.</li>
+        <li><strong>Scanned for security problems.</strong> GitHub's CodeQL code scanning, Dependabot alerts and secret scanning with push protection are on for every repository.</li>
+        <li><strong>Secrets never in code.</strong> API keys live in ignored local files or encrypted CI secrets.</li>
+        <li><strong>Dependencies pinned to exact commits</strong>, so a tampered release can't slip into a build.</li>
+        <li><strong>Checked against reality.</strong> Every result was verified against the raw data or in a real browser, and each README explains what went wrong along the way, not just what worked.</li>
+        <li><strong>Built with AI assistance.</strong> I use an AI coding assistant (Claude) to build faster, and I make sure I understand and can explain every design decision in these projects.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="edu-title">
+      <h2 id="edu-title">Education</h2>
+      <p><strong>Level 3 BTEC Extended Diploma in Computer Science</strong>, West Herts College, 2025 to 2027. Modules include IT Systems Security and Encryption, Computer Networking and Object-Oriented Programming.</p>
+    </section>
+
+    <footer class="footer">
+      <p>All projects only analyse data or look up public reputation services. None of them scan or attack anyone. Data credits are in each project's README.</p>
+    </footer>
+  </main>
+</body>
+</html>
