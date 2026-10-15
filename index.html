@@ -39,7 +39,8 @@
           <p class="what">Reads SSH server logs and detects brute-force attacks, username spraying and suspicious successful logins.</p>
           <p class="result"><strong>On real server logs:</strong> 532 failed logins from 24 IPs; flagged 6 brute-force sources, one making 147 attempts in 5 minutes. Checking it against the raw data exposed two parsing gaps that were hiding attacks, both fixed and tested.</p>
           <p class="result"><strong>SOC-ready:</strong> every detection is mapped to MITRE ATT&amp;CK (T1110 Brute Force, T1078 Valid Accounts) and published as a Sigma rule, the vendor-neutral format SIEMs import, validated with the official Sigma tools.</p>
-          <p class="tags">Python · detection engineering · MITRE ATT&amp;CK · Sigma · unit tests</p>
+          <p class="result"><strong>Tested like a SOC would:</strong> 10 labelled attack and normal-activity scenarios. The first version passed 6; testing exposed blind spots for IPv6, low-and-slow and distributed attacks plus a false alarm, all fixed (now 10/10).</p>
+          <p class="tags">Python · detection engineering · MITRE ATT&amp;CK · Sigma · detection testing</p>
           <p class="actions"><a href="https://github.com/Ezashi9/log-hunter">Code and write-up</a></p>
           <p class="badge"><img src="https://github.com/Ezashi9/log-hunter/actions/workflows/ci.yml/badge.svg" alt="Log Hunter test status" width="100" height="20"></p>
         </article>
@@ -73,8 +74,26 @@
     </section>
 
     <section aria-labelledby="other-title">
-      <h2 id="other-title">Privacy tool</h2>
+      <h2 id="other-title">Email security, risk and privacy</h2>
       <div class="cards">
+        <article class="card">
+          <h3>Phish Triage</h3>
+          <p class="what">Analyses a suspicious email like a junior SOC analyst: sender authentication, lookalike domains, deceptive links, dangerous attachments and brand impersonation. Never opens links or attachments.</p>
+          <p class="result"><strong>Tested on real phishing:</strong> caught 59.3% of a held-out sample of real phishing emails with 0.9% false alarms on 2,500 legitimate ones, up from 40.3%. Found that most missed phishing <em>passed</em> SPF, DKIM and DMARC from attacker-owned domains. Evaluation runs in the cloud so live samples never touch my PC.</p>
+          <p class="tags">Python · email security · phishing · evaluation methodology</p>
+          <p class="actions"><a href="https://github.com/Ezashi9/phish-triage">Code and results</a></p>
+          <p class="badge"><img src="https://github.com/Ezashi9/phish-triage/actions/workflows/ci.yml/badge.svg" alt="Phish Triage test status" width="100" height="20"></p>
+        </article>
+
+        <article class="card">
+          <h3>Cyber Essentials Risk Assessment</h3>
+          <p class="what">A risk assessment for a fictional 12-person accountancy firm, written for the owner: 15 scored risks, a gap analysis against the UK government's Cyber Essentials v3.3, and a costed action plan.</p>
+          <p class="result"><strong>Business focus:</strong> a one-page executive summary in plain English, with the biggest risks fixable in two weeks for under £2,500, backed by the government's Cyber Security Breaches Survey. A tested Python tool generates the risk register and heat maps.</p>
+          <p class="tags">Governance, risk &amp; compliance · Cyber Essentials · NCSC 10 Steps · UK GDPR</p>
+          <p class="actions"><a href="https://github.com/Ezashi9/cyber-essentials-assessment/blob/master/assessment/00-executive-summary.md">Executive summary</a><a href="https://github.com/Ezashi9/cyber-essentials-assessment">Full assessment</a></p>
+          <p class="badge"><img src="https://github.com/Ezashi9/cyber-essentials-assessment/actions/workflows/ci.yml/badge.svg" alt="Risk assessment test status" width="100" height="20"></p>
+        </article>
+
         <article class="card">
           <h3>Breach Check</h3>
           <p class="what">Checks whether a password has appeared in a data breach without the password ever leaving your device.</p>
