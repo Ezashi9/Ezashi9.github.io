@@ -24,8 +24,8 @@
     </header>
 
     <section class="stats" aria-label="At a glance">
-      <div class="stat"><p class="stat-value">7</p><p class="stat-label">public security projects</p></div>
-      <div class="stat"><p class="stat-value">111</p><p class="stat-label">automated tests, run on every change</p></div>
+      <div class="stat"><p class="stat-value">8</p><p class="stat-label">public security projects</p></div>
+      <div class="stat"><p class="stat-value">131</p><p class="stat-label">automated tests, run on every change</p></div>
       <div class="stat"><p class="stat-value">Real data</p><p class="stat-label">every tool evaluated on real logs, emails or threat feeds</p></div>
       <div class="stat"><p class="stat-value">2</p><p class="stat-label">live pages, one updated daily by automation</p></div>
     </section>
@@ -81,7 +81,7 @@
     </section>
 
     <section aria-labelledby="other-title">
-      <h2 id="other-title">Email security, risk and privacy</h2>
+      <h2 id="other-title">Email, cloud, risk and privacy</h2>
       <div class="cards">
         <article class="card">
           <h3>Phish Triage</h3>
@@ -90,6 +90,15 @@
           <p class="tags">Python · email security · phishing · evaluation methodology</p>
           <p class="actions"><a href="https://github.com/Ezashi9/phish-triage">Code and results</a></p>
           <p class="badge"><img src="https://github.com/Ezashi9/phish-triage/actions/workflows/ci.yml/badge.svg" alt="Phish Triage test status" width="100" height="20"></p>
+        </article>
+
+        <article class="card">
+          <h3>Cloud Config Auditor</h3>
+          <p class="what">Scans Terraform (infrastructure as code) for 26 high-impact AWS security risks before anything is deployed: exposed keys, public storage, open admin ports, unencrypted data, over-broad permissions. Every finding says why it matters and how to fix it.</p>
+          <p class="result"><strong>Tested on TerraGoat:</strong> caught 17 of 17 labelled flaws in a deliberately vulnerable project, and agreed with the industry tool Checkov on 49 resources while also finding a hard-coded secret Checkov missed. 56 prioritised findings versus Checkov's 215. SARIF output and a CI gate that fails builds on serious findings.</p>
+          <p class="tags">Cloud security · AWS · Terraform · DevSecOps · SARIF</p>
+          <p class="actions"><a href="https://github.com/Ezashi9/cloud-config-auditor">Code and results</a></p>
+          <p class="badge"><img src="https://github.com/Ezashi9/cloud-config-auditor/actions/workflows/ci.yml/badge.svg" alt="Cloud Config Auditor test status" width="100" height="20"></p>
         </article>
 
         <article class="card">
@@ -141,6 +150,8 @@
         <div>
           <h3>Risk and secure engineering</h3>
           <ul class="chips">
+            <li><a href="https://github.com/Ezashi9/cloud-config-auditor">Cloud security (AWS)</a></li>
+            <li><a href="https://github.com/Ezashi9/cloud-config-auditor#checks">Infrastructure as code</a></li>
             <li><a href="https://github.com/Ezashi9/cyber-essentials-assessment">Risk assessment</a></li>
             <li><a href="https://github.com/Ezashi9/cyber-essentials-assessment/blob/master/assessment/04-cyber-essentials-gap-analysis.md">Cyber Essentials</a></li>
             <li><a href="https://github.com/Ezashi9/home-soc-dashboard#security-the-dashboard-is-built-to-resist-its-own-data">XSS prevention, CSP</a></li>
